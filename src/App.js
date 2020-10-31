@@ -11,46 +11,80 @@ import './App.css';
 class App extends Component{
   state = {
      books : [
-       {bookName : "ABC", writer : "abc"},
-       {bookName : "DEF", writer : "def"},
-       {bookName : "GHI", writer : "ghi"}
-     ] 
+       {id:1 , bookName : "ABC", writer : "abc"},
+       {id:2 , bookName : "DEF", writer : "def"},
+       {id:3 , bookName : "GHI", writer : "ghi"}
+       
+     ],
+     showBooks : true,
   }
 
-  changeBookState = () =>{
-    //console.log("clicked");
-    this.setState({
-      books : [
-        {bookName : "newBookName", writer : "fjsdf"},
-        {bookName : "DEF", writer : "def"},
-        {bookName : "GHI Update", writer : "ghi"}
-      ]
-    })
+  deleteBookState = (index) =>{
+    //const temp = this.state.books.slice()   // Copy books array
+    //const temp = this.state.books.map(item =>item)
+    const temp = [...this.state.books] // More Smarter way to copy books array in temp veriable
+    console.log(temp);
+    temp.splice(index,1)                      //The splice() method adds/removes items to/from an array, and returns the removed item(s).
+    this.setState({books:temp})                        // Syntax : array.splice(index, howmany, item1, ....., itemX)
+
+
   }
-  changeInputState = (e) =>{
+
+
+  changeInputState = (event,index) =>{
     //console.log("Input Target----",e.target);
+    const book = {...this.state.books[index]}
+    book.bookName = event.target.value;
+    const temp = [...this.state.books]
+    temp[index]= book
     this.setState({
-      books : [
-        {bookName : "jhdfsf" , writer : "writerName"},
-        {bookName : "jhdfsf", writer : "def"},
-        {bookName : e.target.value, writer : "ghi"}
-      ]
+        books:temp   
+    })
+
+    //console.log(book);
+  }
+
+  toggleBooks = () =>{
+    this.setState({
+      showBooks : !this.state.showBooks
     })
   }
+
+
+
 
   render(){
     //console.log(this.state);
+
+
+    //console.log(bookState);
+    let books = null
+    if(this.state.showBooks){
+      books = this.state.books.map((book,index)=>{
+        //console.log(book.bookName);
+        return(
+          <Book
+          bookName={book.bookName}
+          writer={book.writer}
+          delete = {this.deleteBookState.bind(this,index)} // we can also use bind method for passing parameter instead of using Arrow function .
+          change = {this.changeInputState}
+          key = {book.id}
+          inputName = {(event) => this.changeInputState(event,index)} // we can also use bind method for passing parameter.
+          />
+        )
+    })
+
+    }
+
+    //console.log(books);
   return (
     <div className="App">
       <h2>Books List : </h2>
-      <button onClick={this.changeBookState}>Change State</button>
+      <hr/>
+      <button onClick={this.toggleBooks}>Toggle Books</button>
 
       <hr/>
-      <Book bookName={this.state.books[0].bookName} writer={this.state.books[0].writer}></Book>
-      <Book bookName={this.state.books[1].bookName} writer={this.state.books[1].writer}></Book>
-      <Book
-      change= {this.changeInputState}
-      bookName={this.state.books[2].bookName} writer={this.state.books[2].writer}></Book>
+      { books }
       
     </div>
   )

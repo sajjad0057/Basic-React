@@ -5,9 +5,9 @@ const Book = (props) => {
   return (
     <div className="Book">
         
-      <h3 >Books : {props.bookName}</h3>
+      <h3 onClick={props.delete} > Books : {props.bookName}</h3>
       <h5>writer : {props.writer} </h5>
-      <input type="text" onChange={props.change} value={props.bookName}/>
+      <input type="text" onChange={props.inputName} value={props.bookName}/>
       <hr/>
     </div>
   );
