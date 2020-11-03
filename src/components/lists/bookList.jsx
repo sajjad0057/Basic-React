@@ -29,7 +29,7 @@ class BookList extends Component{
 
     shouldComponentUpdate(nextProps,nextState){
         console.log("Update bookList shouldComponentUpdate",nextProps,nextState);
-        return true
+        return false
     }
     componentWillUpdate(nextProps,nextState){
         console.log("update bookList componentWillUpdate !",nextProps,nextState);
