@@ -47,9 +47,7 @@ class MainComponent extends Component{
          showBooks : !this.state.showBooks
        })
      }
-    componentWillMount(){
-      console.log("Main Component componentWillMount !");
-    }
+
     componentDidMount(){
       console.log("Main Component componentDidMount !");
     }
@@ -59,12 +57,17 @@ class MainComponent extends Component{
       return true
     }
 
-    componentWillUpdate(nextProps,nextState){
-      console.log("update MainComponent componentWillUpdate !",nextProps,nextState);
-    }
+
 
     componentDidUpdate(){
       console.log("update MainComponent componentDidUpdate !");
+    }
+    static getDerivedStateFromProps(nextProps,prevState){
+      console.log("MainComponent getDerivedStateFromProps",nextProps,prevState);
+      return prevState
+    }
+    getSnapshotBeforeUpdate(){
+      console.log("Update MainComponent getSnapshotBeforeUpdate");
     }
    
    

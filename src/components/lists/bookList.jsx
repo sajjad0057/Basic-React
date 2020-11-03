@@ -7,18 +7,12 @@ class BookList extends Component{
         super(props)
         console.log("BookList Constructor !");
     }
-    componentWillMount(){
-        console.log("BookList Component componentWillMount !");
-        }
-
 
     componentDidMount(){
         console.log("BookList Component componentDidMount !");
       }
 
-    componentWillReceiveProps(nextProps){
-        console.log("Update bookList componentWillReceiveProps" , nextProps);
-    }
+
     /*
     shouldComponentUpdate(nextProps, nextState) −
     This method returns a Boolean value true or false. Based on the return value React executes the render method which updates the actual DOM.
@@ -29,15 +23,23 @@ class BookList extends Component{
 
     shouldComponentUpdate(nextProps,nextState){
         console.log("Update bookList shouldComponentUpdate",nextProps,nextState);
-        return false
-    }
-    componentWillUpdate(nextProps,nextState){
-        console.log("update bookList componentWillUpdate !",nextProps,nextState);
+        return true
     }
 
     componentDidUpdate(){
         console.log("update bookList componentDidUpdate !");
     }
+
+    static getDerivedStateFromProps(nextProps,prevState){
+        console.log("bookList getDerivedStateFromProps",nextProps,prevState);
+        return prevState
+    }
+    
+    getSnapshotBeforeUpdate(){
+        console.log("Update bookList getSnapshotBeforeUpdate");
+
+    }
+
      
     render(){
         console.log("BookList Component rendered");
