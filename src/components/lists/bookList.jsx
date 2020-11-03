@@ -1,23 +1,42 @@
-import React from  'react';
+import React, {Component} from  'react';
 import Books from '../representational/Book.jsx'
 
-const BookList = (props)=>{
+class BookList extends Component{
     //console.log('-----',props);
-    return(
-        props.books.map((book,index)=>{
-            //console.log(book.bookName);
-            return(
-              <Books
-              bookName={book.bookName}
-              writer={book.writer}
-              delete = {()=>props.delete(index)} 
+    constructor(props){
+        super(props)
+        console.log("BookList Constructor !");
+    }
 
-              key = {book.id}
-              inputName = {(event) => props.change(event,index)} 
-              />
-            )
-        })
-    )
+
+    componentDidMount(){
+        console.log("BookList Component componentDidMount !");
+      }
+
+    componentWillMount(){
+    console.log("BookList Component componentWillMount !");
+    }
+     
+    render(){
+        console.log("BookList Component rendered");
+        return(
+            this.props.books.map((book,index)=>{
+                //console.log(book.bookName);
+                return(
+                  <Books
+                  bookName={book.bookName}
+                  writer={book.writer}
+                  delete = {()=>this.props.delete(index)} 
+    
+                  key = {book.id}
+                  inputName = {(event) => this.props.change(event,index)} 
+                  />
+                )
+            })
+        )
+
+    }
+
 }
 
 

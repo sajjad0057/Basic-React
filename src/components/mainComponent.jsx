@@ -4,10 +4,18 @@ import books from '../assets/books.js'
 
 
 class MainComponent extends Component{
-    state = {
+    constructor(props){
+      super(props)
+      this.state = {
         books : books,
         showBooks : true,
      }
+
+     console.log("MainComponent Constructor"); 
+
+    }
+
+
    
      deleteBookState = (index) =>{
        //const temp = this.state.books.slice()   // Copy books array
@@ -39,13 +47,18 @@ class MainComponent extends Component{
          showBooks : !this.state.showBooks
        })
      }
-   
+    componentWillMount(){
+      console.log("Main Component componentWillMount !");
+    }
+    componentDidMount(){
+      console.log("Main Component componentDidMount !");
+    }
    
    
    
      render(){
        //console.log(this.state);
-   
+      console.log("MainComponent Rendered !");
    
        //console.log(bookState);
        let books = null
