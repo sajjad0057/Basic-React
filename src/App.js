@@ -1,16 +1,16 @@
 import React from 'react';
 import MainComponent from './components/mainComponent.jsx';
-
 import './App.css';
-
-
+import { BrowserRouter } from 'react-router-dom';
 
 
 // Functional Component
 
 const App =() =>{
   return(
-    <MainComponent />
+    <BrowserRouter>
+      <MainComponent />
+    </BrowserRouter>
   )
 }
 

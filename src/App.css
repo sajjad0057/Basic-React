@@ -1,4 +1,36 @@
 .App {
   text-align: center;
 }
+.nav-bar ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
 
+}
+
+.nav-bar li{
+  display: inline-block;
+  margin: 20px;
+  padding: 5px;
+  border: 1px solid cadetblue;
+  border-radius: 4px;
+
+}
+
+.nav-bar a{
+  text-decoration: none;
+  color: rgb(41, 41, 40);
+}
+
+.header{
+  padding: 10px;
+  background-image: linear-gradient(to right top, #aee636, #00bf72, #47d35a, #00bf72, #aee636);
+
+  border-bottom: 2px solid rgb(3, 73, 58);
+}
+
+
+.nav-bar a:hover, a:active, a.active{
+  color: #aee636;
+}
+ 
