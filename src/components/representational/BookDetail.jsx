@@ -1,6 +1,6 @@
 import React from "react";
 const BookDetail = (props) => {
-  console.log("BookDetail Props --->", props);
+  //console.log("BookDetail Props --->", props);
   if (props.book == null) return <div></div>;
   return (
     <div>

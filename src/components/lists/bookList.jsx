@@ -15,7 +15,7 @@ class BookList extends Component {
   // }
 
   render() {
-    console.log("******>>", this.props);
+    //console.log("******>>", this.props);
 
     return this.props.books.map((book) => {
       //console.log(book.bookName);

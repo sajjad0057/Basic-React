@@ -14,7 +14,7 @@ class MainComponent extends Component {
     };
   }
   selectedBookHandler = (bookId) => {
-    console.log("++++++++", bookId);
+    //console.log("++++++++", bookId);
     const book = this.state.books.filter((book) => book.id === bookId)[0];
     this.setState({
       selectedBook: book,
