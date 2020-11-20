@@ -2,11 +2,19 @@ import React,{Component} from "react";
 
 class NewBook extends Component{
   //console.log('------>',props);
-  state = {
-      bookName : '',
-      writer : '',
-      description : ''
+  constructor(props){
+      super(props);
+      this.state={
+        bookName : '',
+        writer : '',
+        description : '',  
+      }
+      this.handleInputChange = this.handleInputChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this)
   }
+
+
+
   handleInputChange = event =>{
       const name = event.target.name
       const value = event.target.value
@@ -34,20 +42,20 @@ class NewBook extends Component{
         <div>
           <h2>New Data Entry </h2>
           <br />
-          <form onSubmit={(e=>this.handleSubmit(e))}>
+          <form onSubmit={this.handleSubmit}>
             <label> Book Name : </label>
             <input type="text" name="bookName" value={this.state.bookName}
-            onChange={(event)=>this.handleInputChange(event)}/>
+            onChange={this.handleInputChange}/>
             <br />
             <br />
             <label> Writer : </label>
             <input type="text" name="writer" value={this.state.writer}
-            onChange={(event)=>this.handleInputChange(event)} />
+            onChange={this.handleInputChange} />
             <br />
             <br />
             <label> Description : </label>
             <textarea name="book" name="description" value={this.state.description}
-            onChange={(event)=>this.handleInputChange(event)} />
+            onChange={this.handleInputChange} />
             <br />
             <br />
             <input type="submit" value="Submit" />
