@@ -1,35 +1,20 @@
-import React,{Component} from "react";
+import React,{Component, createRef} from "react";
 
 class NewBook extends Component{
   //console.log('------>',props);
   constructor(props){
       super(props);
-      this.state={
-        bookName : '',
-        writer : '',
-        description : '',  
-      }
-      this.handleInputChange = this.handleInputChange.bind(this);
+      this.bookName = createRef();
+      this.writer = createRef();
+      this.description = createRef();
       this.handleSubmit = this.handleSubmit.bind(this)
   }
 
 
-
-  handleInputChange = event =>{
-      const name = event.target.name
-      const value = event.target.value
-      //console.log(name,value);
-      this.setState({
-          [name] : value
-
-          /* if we want to use variable as a state key in setState(),
-            must put this variable under [variable_name].. 
-            otherwise variable can be treat as a new kay in state..
-         */
-      })
-  }
   handleSubmit = e =>{
-    console.log(this.state);
+    console.log(`${this.bookName.current.value},
+    ${this.writer.current.value},
+    ${this.description.current.value}`);
     e.preventDefault();
   }
 
@@ -44,18 +29,15 @@ class NewBook extends Component{
           <br />
           <form onSubmit={this.handleSubmit}>
             <label> Book Name : </label>
-            <input type="text" name="bookName" value={this.state.bookName}
-            onChange={this.handleInputChange}/>
+            <input type="text" name="bookName" ref={this.bookName}/>
             <br />
             <br />
             <label> Writer : </label>
-            <input type="text" name="writer" value={this.state.writer}
-            onChange={this.handleInputChange} />
+            <input type="text" name="writer" ref={this.writer}/>
             <br />
             <br />
             <label> Description : </label>
-            <textarea name="book" name="description" value={this.state.description}
-            onChange={this.handleInputChange} />
+            <textarea name="book" name="description" ref={this.description}/>
             <br />
             <br />
             <input type="submit" value="Submit" />
